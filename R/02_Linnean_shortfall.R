@@ -1,11 +1,11 @@
 
 # Read data ---------------------------------------------------------------
 
-data_l <- read_xlsx("./data/linnean_data.xlsx", sheet = 1)
+data <- read_xlsx("./data/linnean_data.xlsx", sheet = 1)
 
 # Data organization -------------------------------------------------------
 
-data_l <- data_l %>% 
+data_l <- data %>% 
   group_by(year) %>% 
   summarise(n = length(year)) %>% 
   mutate(n_cum = cumsum(n))
@@ -16,7 +16,7 @@ description_curve <- ggplot(data = data_l, aes(x = year, y = n_cum)) +
   xlab("Years") +
   ylab("Acumulated number of described species") +
   geom_line() +
-  geom_point(colour = "black", size = 2, shape = 21, fill = "grey") +
+  geom_point(colour = "black", size = 2, shape = 21, fill = "lightblue") +
   theme_bw() +
   annotate("text", x = 1840, y = 2370, label = "A", size = 8) +
   theme(axis.title = element_text(size = 14, colour = "black"),
@@ -44,3 +44,5 @@ ggsave(filename = "./figures/linnean_shortfall.png",
        width = 7, 
        height = 11,
        dpi = 300)
+
+rm(linnean_shortfall, effort, description_curve, data_l)

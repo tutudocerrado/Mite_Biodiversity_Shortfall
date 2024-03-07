@@ -9,10 +9,24 @@ ipak <- function(pkg){
   sapply(pkg, require, character.only = TRUE)
 }
 
-ipak(c("ggplot2","devtools","gridExtra","MASS","car","visreg","tidyverse",
-       "segmented","speciesgeocodeR","raster","readxl", "dplyr", "lme4"))
-# readxl, tidyverse
-# Pacote para raster de riqueza de especies
+ipak(c("ggplot2",
+       "gridExtra",
+       "MASS",
+       "car",
+       "visreg",
+       "tidyverse",
+       "speciesgeocodeR",
+       "terra",
+       "readxl", 
+       "dplyr", 
+       "lme4",
+       "Rocc",
+       "ggmap"))
 
-devtools::install_github("azizka/speciesgeocodeR")
-library(speciesgeocodeR)
+# If speciesgeocodeR package is not installed, run the code bellow
+
+remotes::install_github("azizka/speciesgeocodeR")
+
+# If Rocc package is not installed, run the code bellow
+
+remotes::install_github("liibre/Rocc")
